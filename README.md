@@ -68,14 +68,19 @@ The detailed problem [here](/puzzles/03_n_queens/problem.md).
 
 </details>
 
+---
 
 ### Cork Railway Scheduling Problem
 
-There are three versions of the same scheduling problem with increasing complexity. You can find the detailed problem description of each version in their respective folders.
+Every years, the challenge of the CP training week is changing. This year, we have a railway scheduling problem based on the real-world scenario of managing train and driver schedules for a railway company in Cork, Ireland.
 
+There are three versions of the same scheduling problem with increasing complexity. You can find the detailed problem description of each version in their respective folders.
+![Train Timeline](/assets/train_timeline_cobh_00h-12h.png)
 1. **Basic Scheduling Problem**: Assign trips to drivers and trains while minimizing the number of drivers and trains used.
 2. **Scheduling with Breaks**: Similar to the basic problem but includes mandatory breaks for drivers.
 3. **With Higher Complexity**: Adds more trips that require more drivers and trains.
+
+---
 
 ### Hospital Capacity Management Problem
 
@@ -83,7 +88,7 @@ This problem involves managing hospital resources such as beds, doctors, and nur
 
 At the scope of the training week, I dont have time to implement the solution. However, I have a basic understanding of the problem and some ideas on how to approach it using CP and LP techniques.
 
-A very detailed approach to solve this problem can be found in this lecture slides: [Modelling Alternatives for the IHTC 2024 Competition - A Modelling Tutorial](/hospital-management/slide.pdf) - This is a tutorial presented by Dr. Helmut Simonis - The lecturer of the CP training week.
+A very detailed approach to solve this problem can be found in [Modelling Alternatives for the IHTC 2024 Competition - A Modelling Tutorial](/hospital-management/slide.pdf) - This is a tutorial presented by Dr. Helmut Simonis - The lecturer of the CP training week.
 
 ## Acknowledgements
 
