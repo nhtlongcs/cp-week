@@ -1,0 +1,583 @@
+{
+    "nrTrips": 72,
+    "trips": [
+        {
+            "duration": 55,
+            "nr": 1,
+            "arrival": 385,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 330
+        },
+        {
+            "duration": 55,
+            "nr": 2,
+            "arrival": 445,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 390
+        },
+        {
+            "duration": 55,
+            "nr": 3,
+            "arrival": 475,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 420
+        },
+        {
+            "duration": 55,
+            "nr": 4,
+            "arrival": 505,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 450
+        },
+        {
+            "duration": 55,
+            "nr": 5,
+            "arrival": 535,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 480
+        },
+        {
+            "duration": 55,
+            "nr": 6,
+            "arrival": 565,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 510
+        },
+        {
+            "duration": 55,
+            "nr": 7,
+            "arrival": 595,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 540
+        },
+        {
+            "duration": 55,
+            "nr": 8,
+            "arrival": 625,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 570
+        },
+        {
+            "duration": 55,
+            "nr": 9,
+            "arrival": 655,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 600
+        },
+        {
+            "duration": 55,
+            "nr": 10,
+            "arrival": 685,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 630
+        },
+        {
+            "duration": 55,
+            "nr": 11,
+            "arrival": 715,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 660
+        },
+        {
+            "duration": 55,
+            "nr": 12,
+            "arrival": 745,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 690
+        },
+        {
+            "duration": 55,
+            "nr": 13,
+            "arrival": 775,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 720
+        },
+        {
+            "duration": 55,
+            "nr": 14,
+            "arrival": 805,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 750
+        },
+        {
+            "duration": 55,
+            "nr": 15,
+            "arrival": 835,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 780
+        },
+        {
+            "duration": 55,
+            "nr": 16,
+            "arrival": 865,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 810
+        },
+        {
+            "duration": 55,
+            "nr": 17,
+            "arrival": 895,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 840
+        },
+        {
+            "duration": 55,
+            "nr": 18,
+            "arrival": 925,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 870
+        },
+        {
+            "duration": 55,
+            "nr": 19,
+            "arrival": 955,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 900
+        },
+        {
+            "duration": 55,
+            "nr": 20,
+            "arrival": 985,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 930
+        },
+        {
+            "duration": 55,
+            "nr": 21,
+            "arrival": 1015,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 960
+        },
+        {
+            "duration": 55,
+            "nr": 22,
+            "arrival": 1045,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 990
+        },
+        {
+            "duration": 55,
+            "nr": 23,
+            "arrival": 1075,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1020
+        },
+        {
+            "duration": 55,
+            "nr": 24,
+            "arrival": 1105,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1050
+        },
+        {
+            "duration": 55,
+            "nr": 25,
+            "arrival": 1135,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1080
+        },
+        {
+            "duration": 55,
+            "nr": 26,
+            "arrival": 1165,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1110
+        },
+        {
+            "duration": 55,
+            "nr": 27,
+            "arrival": 1195,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1140
+        },
+        {
+            "duration": 55,
+            "nr": 28,
+            "arrival": 1225,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1170
+        },
+        {
+            "duration": 55,
+            "nr": 29,
+            "arrival": 1255,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1200
+        },
+        {
+            "duration": 55,
+            "nr": 30,
+            "arrival": 1315,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1260
+        },
+        {
+            "duration": 55,
+            "nr": 31,
+            "arrival": 1375,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1320
+        },
+        {
+            "duration": 55,
+            "nr": 32,
+            "arrival": 1435,
+            "destination": "cobh",
+            "drivingTime": 51,
+            "departure": 1380
+        },
+        {
+            "duration": 53,
+            "nr": 33,
+            "arrival": 398,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 345
+        },
+        {
+            "duration": 53,
+            "nr": 34,
+            "arrival": 428,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 375
+        },
+        {
+            "duration": 53,
+            "nr": 35,
+            "arrival": 458,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 405
+        },
+        {
+            "duration": 53,
+            "nr": 36,
+            "arrival": 488,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 435
+        },
+        {
+            "duration": 53,
+            "nr": 37,
+            "arrival": 518,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 465
+        },
+        {
+            "duration": 53,
+            "nr": 38,
+            "arrival": 548,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 495
+        },
+        {
+            "duration": 53,
+            "nr": 39,
+            "arrival": 578,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 525
+        },
+        {
+            "duration": 53,
+            "nr": 40,
+            "arrival": 608,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 555
+        },
+        {
+            "duration": 53,
+            "nr": 41,
+            "arrival": 638,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 585
+        },
+        {
+            "duration": 53,
+            "nr": 42,
+            "arrival": 668,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 615
+        },
+        {
+            "duration": 53,
+            "nr": 43,
+            "arrival": 698,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 645
+        },
+        {
+            "duration": 53,
+            "nr": 44,
+            "arrival": 728,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 675
+        },
+        {
+            "duration": 53,
+            "nr": 45,
+            "arrival": 758,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 705
+        },
+        {
+            "duration": 53,
+            "nr": 46,
+            "arrival": 788,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 735
+        },
+        {
+            "duration": 53,
+            "nr": 47,
+            "arrival": 818,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 765
+        },
+        {
+            "duration": 53,
+            "nr": 48,
+            "arrival": 848,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 795
+        },
+        {
+            "duration": 53,
+            "nr": 49,
+            "arrival": 878,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 825
+        },
+        {
+            "duration": 53,
+            "nr": 50,
+            "arrival": 908,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 855
+        },
+        {
+            "duration": 53,
+            "nr": 51,
+            "arrival": 938,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 885
+        },
+        {
+            "duration": 53,
+            "nr": 52,
+            "arrival": 968,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 915
+        },
+        {
+            "duration": 53,
+            "nr": 53,
+            "arrival": 998,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 945
+        },
+        {
+            "duration": 53,
+            "nr": 54,
+            "arrival": 1028,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 975
+        },
+        {
+            "duration": 53,
+            "nr": 55,
+            "arrival": 1058,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1005
+        },
+        {
+            "duration": 53,
+            "nr": 56,
+            "arrival": 1088,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1035
+        },
+        {
+            "duration": 53,
+            "nr": 57,
+            "arrival": 1118,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1065
+        },
+        {
+            "duration": 53,
+            "nr": 58,
+            "arrival": 1148,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1095
+        },
+        {
+            "duration": 53,
+            "nr": 59,
+            "arrival": 1178,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1125
+        },
+        {
+            "duration": 53,
+            "nr": 60,
+            "arrival": 1208,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1155
+        },
+        {
+            "duration": 53,
+            "nr": 61,
+            "arrival": 1268,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1215
+        },
+        {
+            "duration": 53,
+            "nr": 62,
+            "arrival": 1328,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1275
+        },
+        {
+            "duration": 53,
+            "nr": 63,
+            "arrival": 1418,
+            "destination": "midleton",
+            "drivingTime": 46,
+            "departure": 1365
+        },
+        {
+            "duration": 55,
+            "nr": 64,
+            "arrival": 435,
+            "destination": "mallow",
+            "drivingTime": 51,
+            "departure": 380
+        },
+        {
+            "duration": 55,
+            "nr": 65,
+            "arrival": 495,
+            "destination": "mallow",
+            "drivingTime": 49,
+            "departure": 440
+        },
+        {
+            "duration": 57,
+            "nr": 66,
+            "arrival": 532,
+            "destination": "mallow",
+            "drivingTime": 48,
+            "departure": 475
+        },
+        {
+            "duration": 55,
+            "nr": 67,
+            "arrival": 555,
+            "destination": "mallow",
+            "drivingTime": 51,
+            "departure": 500
+        },
+        {
+            "duration": 57,
+            "nr": 68,
+            "arrival": 1072,
+            "destination": "mallow",
+            "drivingTime": 51,
+            "departure": 1015
+        },
+        {
+            "duration": 53,
+            "nr": 69,
+            "arrival": 1130,
+            "destination": "mallow",
+            "drivingTime": 49,
+            "departure": 1077
+        },
+        {
+            "duration": 55,
+            "nr": 70,
+            "arrival": 1190,
+            "destination": "mallow",
+            "drivingTime": 49,
+            "departure": 1135
+        },
+        {
+            "duration": 55,
+            "nr": 71,
+            "arrival": 1375,
+            "destination": "mallow",
+            "drivingTime": 49,
+            "departure": 1320
+        },
+        {
+            "duration": 55,
+            "nr": 72,
+            "arrival": 1435,
+            "destination": "mallow",
+            "drivingTime": 49,
+            "departure": 1380
+        }
+    ],
+    "workingTimeLimit": 540,
+    "drivingTimeLimit": 420
+}

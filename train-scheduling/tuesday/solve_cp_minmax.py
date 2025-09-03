@@ -2,6 +2,7 @@ import json
 from ortools.sat.python import cp_model
 
 
+
 def solve_with_ortools_improved():
     # Load trip data
     with open("monfri.json", "r") as f:
@@ -11,6 +12,12 @@ def solve_with_ortools_improved():
     # Constants
     WORKING_TIME = 9 * 60  # 9 hours in minutes
     DRIVING_TIME = 7 * 60  # 7 hours in minutes
+    CLOCK_ON = 15
+    CLOCK_OFF = 15
+    BREAK_START = 3 * 60
+    BREAK_END = 6 * 60
+    BREAK_DURATION = 60
+    END_OF_DAY = 24 * 60 * 2
     n_trips = len(trips)
     
     # More conservative bounds based on problem structure
@@ -40,12 +47,15 @@ def solve_with_ortools_improved():
     
     print("Adding constraints...")
     
-    # Constraint 1: Link driver/train assignment to usage variables (simplified)
+    # Constraint 1: Link driver/train assignment to usage variables 
+    assigned_dr = {}
+    assigned_tr = {}
     for d in range(max_drivers):
         # Driver d is used if any trip is assigned to driver d
         assigned_trips = []
         for t in range(n_trips):
             trip_assigned_to_d = model.NewBoolVar(f'trip_{t}_assigned_to_driver_{d}')
+            assigned_dr[(t, d)] = trip_assigned_to_d
             model.Add(trip_driver[t] == d).OnlyEnforceIf(trip_assigned_to_d)
             model.Add(trip_driver[t] != d).OnlyEnforceIf(trip_assigned_to_d.Not())
             assigned_trips.append(trip_assigned_to_d)
@@ -59,6 +69,7 @@ def solve_with_ortools_improved():
         assigned_trips = []
         for t in range(n_trips):
             trip_assigned_to_tr = model.NewBoolVar(f'trip_{t}_assigned_to_train_{tr}')
+            assigned_tr[(t, tr)] = trip_assigned_to_tr
             model.Add(trip_train[t] == tr).OnlyEnforceIf(trip_assigned_to_tr)
             model.Add(trip_train[t] != tr).OnlyEnforceIf(trip_assigned_to_tr.Not())
             assigned_trips.append(trip_assigned_to_tr)
@@ -66,6 +77,8 @@ def solve_with_ortools_improved():
         # Train is used if at least one trip is assigned to it
         model.Add(sum(assigned_trips) >= 1).OnlyEnforceIf(train_used[tr])
         model.Add(sum(assigned_trips) == 0).OnlyEnforceIf(train_used[tr].Not())    # Constraint 2: No time conflicts for trains
+    
+    # Constraint 2: No time conflicts for drivers
     for t1 in range(n_trips):
         for t2 in range(t1 + 1, n_trips):
             trip1, trip2 = trips[t1], trips[t2]
@@ -84,66 +97,74 @@ def solve_with_ortools_improved():
             if not (trip1["arrival"] <= trip2["departure"] or trip2["arrival"] <= trip1["departure"]):
                 # If trips overlap, they cannot use the same driver
                 model.Add(trip_driver[t1] != trip_driver[t2])    # Constraint 4: Driver driving time constraints (simplified)
-    
+
+    # Constraint 4: Total Driving Time < DRIVING_TIME
     for d in range(max_drivers):
         # Calculate total driving time for driver d
         total_driving_time = 0
         for t in range(n_trips):
-            # Create a boolean variable for whether trip t is assigned to driver d
-            is_assigned_to_d = model.NewBoolVar(f'trip_{t}_assigned_to_driver_{d}')
-            model.Add(trip_driver[t] == d).OnlyEnforceIf(is_assigned_to_d)
-            model.Add(trip_driver[t] != d).OnlyEnforceIf(is_assigned_to_d.Not())
-            
-            # Add the driving time for this trip if assigned to driver d
-            total_driving_time += is_assigned_to_d * trips[t]["drivingTime"]
+            total_driving_time += assigned_dr[(t, d)] * trips[t]["drivingTime"]
         
-        # Total driving time must not exceed the limit
         model.Add(total_driving_time <= DRIVING_TIME)
     
-    
+    # Constraint 5: Driver working time span constraints 
+    driver_start_time_vars = []
+    driver_end_time_vars = []
     for d in range(max_drivers):
-        assigned = []
-        departures = []
-        arrivals = []
-        driver_start_time = model.NewIntVar(0, 24*60, f'driver_{d}_start_time')
-        driver_end_time = model.NewIntVar(0, 24*60, f'driver_{d}_end_time')
-        
-        for t in range(n_trips):
-            is_assigned = model.NewBoolVar(f'trip_{t}_assigned_to_driver_{d}')
-            model.Add(trip_driver[t] == d).OnlyEnforceIf(is_assigned)
-            model.Add(trip_driver[t] != d).OnlyEnforceIf(is_assigned.Not())
-            assigned.append(is_assigned)
-
-            dep = model.NewIntVar(0, 24*60, f'dep_{d}_{t}')
-            arr = model.NewIntVar(0, 24*60, f'arr_{d}_{t}')
-
-            # Element encoding: dep = departure[t] if assigned, else ignored
-            model.Add(dep == trips[t]["departure"]).OnlyEnforceIf(is_assigned)
-            model.Add(dep == driver_start_time).OnlyEnforceIf(is_assigned.Not())  # <- tie to start_time
-            model.Add(arr == trips[t]["arrival"]).OnlyEnforceIf(is_assigned)
-            model.Add(arr == driver_end_time).OnlyEnforceIf(is_assigned.Not()) 
-            departures.append(dep)
-            arrivals.append(arr)
-
-        model.AddMinEquality(driver_start_time, [dep for dep in departures])
-        model.AddMaxEquality(driver_end_time, [arr for arr in arrivals])
-
+        driver_start_time = model.NewIntVar(0, 24*60*2, f'driver_{d}_start_time')
+        driver_end_time = model.NewIntVar(0, 24*60*2, f'driver_{d}_end_time')
         driver_has_trips = model.NewBoolVar(f'driver_{d}_has_trips')
-        model.Add(sum(assigned) >= 1).OnlyEnforceIf(driver_has_trips)
-        model.Add(sum(assigned) == 0).OnlyEnforceIf(driver_has_trips.Not())
-
         working_span = model.NewIntVar(0, 24*60, f'driver_{d}_working_span')
-        model.Add(working_span == driver_end_time - driver_start_time)
+        driver_start_time_vars.append(driver_start_time)
+        driver_end_time_vars.append(driver_end_time)
+        # link: driver_has_trips <=> sum(assigned) >= 1
+        assigned_vars = [assigned_dr[(t, d)] for t in range(n_trips)]
+        # Option A (clear): two conditional constraints
+        model.Add(sum(assigned_vars) >= 1).OnlyEnforceIf(driver_has_trips)
+        model.Add(sum(assigned_vars) == 0).OnlyEnforceIf(driver_has_trips.Not())
 
-        model.Add(working_span <= WORKING_TIME).OnlyEnforceIf(driver_has_trips)
+        # bounds from assigned trips
+        for t in range(n_trips):
+            is_assigned = assigned_dr[(t, d)]
+            # nếu trip được gán, start <= departure - CLOCK_ON  (tương đương departure >= start + CLOCK_ON)
+            model.Add(driver_start_time <= trips[t]["departure"] - CLOCK_ON).OnlyEnforceIf(is_assigned)
+            # nếu trip được gán, end >= arrival + CLOCK_OFF  (tương đương arrival <= end - CLOCK_OFF)
+            model.Add(driver_end_time >= trips[t]["arrival"] + CLOCK_OFF).OnlyEnforceIf(is_assigned)
+
+        # đảm bảo thứ tự và tính span **chỉ khi driver có trip**
+        model.Add(driver_end_time >= driver_start_time).OnlyEnforceIf(driver_has_trips)
+        model.Add(working_span == driver_end_time - driver_start_time).OnlyEnforceIf(driver_has_trips)
         model.Add(working_span == 0).OnlyEnforceIf(driver_has_trips.Not())
+        model.Add(working_span <= WORKING_TIME).OnlyEnforceIf(driver_has_trips)
+
+        # 1-hour break: must be between 3rd and 6th hour of shift (optionally widen window for feasibility)
+        break_start_window = model.NewIntVar(0, 24*60, f'driver_{d}_break_start_window')
+        break_end_window = model.NewIntVar(0, 24*60, f'driver_{d}_break_end_window')
+        model.Add(break_start_window == driver_start_time + BREAK_START)
+        model.Add(break_end_window == driver_start_time + BREAK_END)
+
+        trip_intervals = []
+        for t in range(n_trips):
+            is_assigned = assigned_dr[(t, d)]
+            start = trips[t]["departure"]
+            duration = trips[t]["arrival"] - trips[t]["departure"]
+            interval = model.NewOptionalIntervalVar(start, duration, trips[t]["arrival"], is_assigned, f'driver_{d}_trip_{t}_interval')
+            trip_intervals.append(interval)
+
+        break_start = model.NewIntVar(0, 24*60, f'driver_{d}_break_start')
+        break_interval = model.NewIntervalVar(break_start, BREAK_DURATION, break_start + BREAK_DURATION, f'driver_{d}_break_interval')
+        model.Add(break_start >= break_start_window)
+        model.Add(break_start + BREAK_DURATION <= break_end_window)
+        # Break must not overlap with any trip interval (use all intervals together)
+        model.AddNoOverlap([break_interval] + trip_intervals)
 
 
     # Objective: Lexicographic optimization - first minimize trains, then drivers
     # First solve for minimum trains
-    # print("First pass: minimizing trains...")
-    model.Minimize(sum(train_used[tr] for tr in range(max_trains)) + sum(driver_used[d] for d in range(max_drivers)))
-    model.Minimize(sum(driver_used[d] for d in range(max_drivers)))
+    print("First pass: minimizing trains...")
+    model.Minimize(sum(train_used[tr] for tr in range(max_trains)))
+    # model.Minimize(sum(train_used[tr] for tr in range(max_trains)) + sum(driver_used[d] for d in range(max_drivers)))
+    # model.Minimize(sum(driver_used[d] for d in range(max_drivers)))
 
     # Create solver and set time limit
     solver = cp_model.CpSolver()
@@ -159,10 +180,10 @@ def solve_with_ortools_improved():
         print(f"Optimal number of trains: {optimal_trains}")
         
         # # # Now add constraint to fix trains at optimal value and minimize drivers
-        # model.Add(sum(train_used[tr] for tr in range(max_trains)) == optimal_trains)
-        # model.Minimize(sum(driver_used[d] for d in range(max_drivers)))
-        
         print("Second pass: minimizing drivers with fixed trains...")
+        model.Add(sum(train_used[tr] for tr in range(max_trains)) == optimal_trains)
+        model.Minimize(sum(driver_used[d] for d in range(max_drivers)))
+        
         solver2 = cp_model.CpSolver()
         solver2.parameters.max_time_in_seconds = 300.0
         solver2.parameters.log_search_progress = True
@@ -179,10 +200,16 @@ def solve_with_ortools_improved():
         used_drivers = set()
         used_trains = set()
         
+        driver_times = []
+        for d in range(max_drivers):
+            driver_times.append({
+                "driver": f"D{d + 1}",
+                "start": solver2.Value(driver_start_time_vars[d]),
+                "end": solver2.Value(driver_end_time_vars[d])
+            })
         for t in range(n_trips):
             driver_id = solver2.Value(trip_driver[t])
             train_id = solver2.Value(trip_train[t])
-            
             trip = trips[t]
             solution.append({
                 "nr": trip["nr"],
@@ -190,17 +217,17 @@ def solve_with_ortools_improved():
                 "driver": f"D{driver_id + 1}",
                 "departure": trip["departure"],
                 "arrival": trip["arrival"],
-                "destination": trip["destination"]
+                "destination": trip["destination"],
             })
             used_drivers.add(driver_id)
             used_trains.add(train_id)
-        
+
         print(f"Solution uses {len(used_drivers)} drivers and {len(used_trains)} trains")
         print(f"Solve time: {solver2.WallTime():.2f} seconds")
-        return solution
+        return solution, driver_times
         
     else:
-        raise Exception(f"No solution found. Status: {solver2.StatusName(status)}")
+        raise Exception(f"No solution found. Status: {solver.StatusName(status)}")
 
 
 # Main execution
@@ -208,7 +235,7 @@ if __name__ == "__main__":
     print("Solving train scheduling problem using OR-Tools CP-SAT")
     print("=" * 60)
     
-    solution = solve_with_ortools_improved()
+    solution, driver_times = solve_with_ortools_improved()
     
     print(f"Optimization completed:")
     print(f"  - All {len(solution)} trips scheduled")
@@ -217,7 +244,7 @@ if __name__ == "__main__":
     solution.sort(key=lambda x: x["departure"])
     
     with open("solution.json", "w") as f:
-        json.dump(solution, f, indent=4)
+        json.dump({"trips": solution, "drivers": driver_times}, f, indent=4)
     
     print(f"\nSolution saved to solution.json")
     print(f"Solution uses {len(set(s['driver'] for s in solution))} drivers and {len(set(s['train'] for s in solution))} trains")

@@ -1,0 +1,3 @@
+- round trip: start from Cork and end at Cork
+- Dont care about the double track/ single track at this time
+- Dont care about intermediate stations
