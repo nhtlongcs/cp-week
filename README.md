@@ -41,12 +41,54 @@ This is a classic cryptarithmetic puzzle where each letter represents a unique d
  MONEY
 ```
 
-The detailed problem [here](/01_money/problem.md).
+The detailed problem [here](/puzzles/01_money/problem.md).
 
 Both OR-Tools and Gurobi can be used to solve this problem. The key difference is in CP modeling, we have the "AllDifferent" constraint to ensure all letters are assigned different digits. In Linear Programming (LP), we need to model the uniqueness constraint explicitly using sum of the binary variables equal to 1.
 
-Read more about the CP implementation details [here](/01_money/solve_cp.py).
+Read more about the CP implementation details [here](/puzzles/01_money/solve_cp.py).
 
-Read more about the ILP implementation details [here](/01_money/solve_ilp.py).
+Read more about the ILP implementation details [here](/puzzles/01_money/solve_ilp.py).
 
 </details>
+
+<details>
+<summary>Sudoku</summary>
+This is a classic Sudoku puzzle where the goal is to fill a 9x9 grid with digits so that each column, each row, and each of the nine 3x3 subgrids that compose the grid (also called "boxes") contains all of the digits from 1 to 9.
+
+The detailed problem [here](/puzzles/02_sudoku/problem.md).
+
+</details>
+
+
+<details>
+<summary>N-Queens</summary>
+This is a classic N-Queens puzzle where the goal is to place N queens on an N x N chessboard so that no two queens threaten each other.
+
+The detailed problem [here](/puzzles/03_n_queens/problem.md).
+
+</details>
+
+
+### Cork Railway Scheduling Problem
+
+There are three versions of the same scheduling problem with increasing complexity. You can find the detailed problem description of each version in their respective folders.
+
+1. **Basic Scheduling Problem**: Assign trips to drivers and trains while minimizing the number of drivers and trains used.
+2. **Scheduling with Breaks**: Similar to the basic problem but includes mandatory breaks for drivers.
+3. **With Higher Complexity**: Adds more trips that require more drivers and trains.
+
+### Hospital Capacity Management Problem
+
+This problem involves managing hospital resources such as beds, doctors, and nurses to handle patient admissions while minimizing costs. The problem includes various constraints such as resource availability, patient types, and treatment requirements. The detailed problem description can be found in the [competition-page](https://ihtc2024.github.io/).
+
+At the scope of the training week, I dont have time to implement the solution. However, I have a basic understanding of the problem and some ideas on how to approach it using CP and LP techniques.
+
+A very detailed approach to solve this problem can be found in this lecture slides: [Modelling Alternatives for the IHTC 2024 Competition - A Modelling Tutorial](/hospital-management/slide.pdf) - This is a tutorial presented by Dr. Helmut Simonis - The lecturer of the CP training week.
+
+## Acknowledgements
+
+- Dr. Helmut Simonis - For the excellent lectures and guidance during the CP training week.
+
+## References
+- Google OR-Tools Documentation 
+- Gurobi Documentation
