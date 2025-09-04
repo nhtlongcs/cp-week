@@ -355,12 +355,14 @@ Define working start/end for each driver. So in this case, we use the Big-M line
 If trip $t$ is assigned to driver $d$:
 
 $$
-s_d \leq \text{dep}_t + M (1 - \sum_{r \in R} x_{t,d,r}), 
+s_d \leq dep_t + M (1 - \sum_{r \in R} x_{t,d,r}), 
 $$
 
+
 $$
-e_d \geq \text{arr}_t - M (1 - \sum_{r \in R} x_{t,d,r})
+e_d \geq arr_{t} - M (1 - \sum_{r \in R} x_{t,d,r})
 $$
+
 
 Total span ≤ working time:
 
