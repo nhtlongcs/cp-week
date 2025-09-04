@@ -334,7 +334,7 @@ $$
 #### 3. Train Non-Overlap
 
 A train cannot be assigned to overlapping trips:
-If $[\text{dep}_{t_1}, \text{arr}_{t_1}]$ and $[\text{dep}_{t_2}, \text{arr}_{t_2}]$ overlap, then:
+If $[dep_{t_1}, arr_{t_1}]$ and $[dep_{t_2}, arr_{t_2}]$ overlap, then:
 
 $$
 \sum_{d \in D} x_{t_1,d,r} + \sum_{d \in D} x_{t_2,d,r} \leq 1,
