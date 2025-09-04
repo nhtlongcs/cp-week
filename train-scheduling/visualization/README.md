@@ -6,6 +6,13 @@ This project provides a visualization tool for train scheduling solutions.
 
 The visualization displays train schedules based on solution data in JSON format. It helps analyze and debug scheduling algorithms.
 
+The dashboard includes:
+- A Gantt chart showing driver and train assignments .
+- A warning panel highlighting potential issues in the schedule.
+- A summary of key statistics.
+
+![Screenshot](./screenshot.png)
+
 ## Installation
 
 Ensure you have [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) installed.
