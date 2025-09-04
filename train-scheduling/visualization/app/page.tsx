@@ -6,9 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Train } from "lucide-react"
-import { fetchScheduleData } from "@/data/sample-data"
 import { processScheduleData } from "@/lib/schedule-utils"
-import type { ScheduleData } from "@/types/schedule"
+import { useSolutionData } from "./solution-data"
 import { DriverGanttChart } from "@/components/driver-gantt-chart"
 import { TrainGanttChart } from "@/components/train-gantt-chart"
 import { WarningPanel } from "@/components/warning-panel"
@@ -17,22 +16,9 @@ import { DashboardFilters } from "@/components/dashboard-filters"
 import { useDashboardData } from "@/hooks/use-dashboard-data"
 
 export default function TrainScheduleDashboard() {
-  const [sampleScheduleData, setSampleScheduleData] = useState<ScheduleData>({ drivers: [], trips: [] })
-  const [scheduleData, setScheduleData] = useState(() => processScheduleData({ drivers: [], trips: [] }))
 
-  // Fetch schedule data on mount
-  React.useEffect(() => {
-    fetchScheduleData()
-      .then((fetchedData) => {
-        setSampleScheduleData(fetchedData)
-        setScheduleData(processScheduleData(fetchedData))
-      })
-      .catch((error) => {
-        console.error("Error fetching schedule data:", error)
-        setSampleScheduleData({ drivers: [], trips: [] })
-        setScheduleData(processScheduleData({ drivers: [], trips: [] }))
-      })
-  }, [])
+  const solutionData = useSolutionData() || { drivers: [], trains: [], trips: [] }
+  const scheduleData = processScheduleData(solutionData)
 
   const {
     filteredData,
@@ -71,8 +57,8 @@ export default function TrainScheduleDashboard() {
     .map((driver) => ({ driver: driver.driver, warnings: driver.warnings }))
 
   // Get unique drivers and trains for filter options
-  const allDrivers = Array.from(new Set(scheduleData.drivers.map((d) => d.driver))).sort()
-  const allTrains = Array.from(new Set(scheduleData.trains.map((t) => t.train))).sort()
+  const allDrivers = Array.from(new Set(scheduleData.drivers?.map((d) => d.driver) ?? [])).sort()
+  const allTrains = Array.from(new Set(scheduleData.trains?.map((t) => t.train) ?? [])).sort()
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-6">

@@ -351,10 +351,12 @@ export function processTrainSchedules(trips: ProcessedTrip[]): TrainSchedule[] {
 
 // Main processing function
 export function processScheduleData(data: ScheduleData) {
-  // console log number of drivers 
-  console.log(`[processScheduleData] Processing schedule with ${data.drivers.length} drivers and ${data.trips.length} trips`)
-  const processedTrips = processTrips(data.trips)
-  const processedDrivers = processDrivers(data.drivers, processedTrips)
+  // Defensive: ensure drivers and trips are arrays
+  const drivers = Array.isArray(data.drivers) ? data.drivers : [];
+  const trips = Array.isArray(data.trips) ? data.trips : [];
+  console.log(`[processScheduleData] Processing schedule with ${drivers.length} drivers and ${trips.length} trips`)
+  const processedTrips = processTrips(trips)
+  const processedDrivers = processDrivers(drivers, processedTrips)
   const trainSchedules = processTrainSchedules(processedTrips)
   const globalWarnings = validateSchedule(processedTrips, processedDrivers)
 

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import SolutionUpload from '@/components/solution-upload'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -91,6 +92,10 @@ export function DashboardFilters({
             <Button variant="outline" size="sm" onClick={onExport}>
               <Download className="w-4 h-4" />
             </Button>
+            {/* Solution Upload */}
+            <div className="ml-2">
+              <SolutionUpload onUpload={onRefresh} />
+            </div>
           </div>
         </div>
       </CardHeader>

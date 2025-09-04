@@ -6,4 +6,3 @@ export async function fetchScheduleData(): Promise<ScheduleData> {
   if (!response.ok) throw new Error("Failed to fetch schedule data")
   return await response.json()
 }
-

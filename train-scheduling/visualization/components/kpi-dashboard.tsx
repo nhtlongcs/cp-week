@@ -266,7 +266,7 @@ export function KPIDashboard({ drivers, trains, trips }: KPIDashboardProps) {
         {/* Break Compliance Chart */}
         <Card>
           <CardHeader>
-            <CardTitle>Break Compliance Analysis</CardTitle>
+            <CardTitle>Long Break Compliance Analysis</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -291,7 +291,7 @@ export function KPIDashboard({ drivers, trains, trips }: KPIDashboardProps) {
         </Card>      
       <Card>
           <CardHeader>
-            <CardTitle>Break Compliance Analysis</CardTitle>
+            <CardTitle>Total Break Compliance Analysis</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
