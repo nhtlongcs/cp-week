@@ -76,9 +76,9 @@ Every years, the challenge of the CP training week is changing. This year, we ha
 
 There are three versions of the same scheduling problem with increasing complexity. You can find the detailed problem description of each version in their respective folders.
 ![Train Timeline](/assets/train_timeline_cobh_00h-12h.png)
-1. **Basic Scheduling Problem**: Assign trips to drivers and trains while minimizing the number of drivers and trains used. [Detailed Problem Description](/train-scheduling/monday/monday.pdf) [Simplified Problem Description](/train-scheduling/monday/README.md) [Solution](/train-scheduling/monday/SOLUTION.md)
-2. **Scheduling with Breaks**: Similar to the basic problem but includes mandatory breaks for drivers. [Detailed Problem Description](/train-scheduling/tuesday/tuesday.pdf) [Simplified Problem Description](/train-scheduling/tuesday/README.md) [Solution](/train-scheduling/tuesday/SOLUTION.md)
-3. **With Higher Complexity**: Adds more trips that require more drivers and trains. [Detailed Problem Description](/train-scheduling/wednesday/wednesday.pdf) [Solution](/train-scheduling/wednesday/README.md)
+1. **Basic Scheduling Problem**: Assign trips to drivers and trains while minimizing the number of drivers and trains used. [[Detailed Problem Description]](/train-scheduling/monday/monday.pdf) [[Simplified Problem Description]](/train-scheduling/monday/README.md) [[Solution]](/train-scheduling/monday/SOLUTION.md)
+2. **Scheduling with Breaks**: Similar to the basic problem but includes mandatory breaks for drivers. [[Detailed Problem Description]](/train-scheduling/tuesday/tuesday.pdf) [[Simplified Problem Description]](/train-scheduling/tuesday/README.md) [[Solution]](/train-scheduling/tuesday/SOLUTION.md)
+3. **With Higher Complexity**: Adds more trips that require more drivers and trains. [[Detailed Problem Description]](/train-scheduling/wednesday/wednesday.pdf) [[Solution]](/train-scheduling/wednesday/README.md)
 
 ---
 
