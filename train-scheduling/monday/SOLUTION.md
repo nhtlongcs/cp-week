@@ -247,7 +247,8 @@ $$
 
 All objectives are leading to the same result in this case.
 
-## 6. Integer Linear Programming (ILP) Approach
+## 6. Mixed-Integer Linear Programming Approach
+
 
 
 The full implementation is in [src/solve_ilp.py](src/solve_ilp.py).

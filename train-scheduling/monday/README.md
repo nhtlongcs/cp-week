@@ -47,6 +47,7 @@ Provided as a JSON structure (`monfri.json`), where each trip includes:
 **Estimation method:** Is there a simple way to estimate the minimum number of drivers required, without solving the full optimization?
 
 Check out my solution in [SOLUTION.md](SOLUTION.md).
+
 ### Bonus Question
 
 Beyond minimizing the number of drivers, what could be a second objective to choose the “best” schedule (e.g., fairness, minimizing idle time, balanced workloads, etc.)?
