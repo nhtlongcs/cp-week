@@ -89,7 +89,7 @@ function generateDriverWarnings(driver: ProcessedDriver): Warning[] {
   const LONG_SHIFT_MIN = 6 * 60
   const MAX_CONTINUOUS_WORK_MIN = 6 * 60
   const EARLY_BREAK_MIN = 3 * 60
-  const MIN_PROPER_BREAK_MIN = 30
+  const MIN_PROPER_BREAK_MIN = 60
 
   // ---- overtime (in hours) ----
   if (driver.workingHours > MAX_SHIFT_HOURS) {
@@ -112,6 +112,18 @@ function generateDriverWarnings(driver: ProcessedDriver): Warning[] {
       severity: "high",
     });
   }
+
+  // Work out of time: have trips outside of working hours
+  const tripsOutside = driver.trips.filter(t => t.departure < workStart || t.arrival > workEnd)
+  if (tripsOutside.length > 0) {
+    warnings.push({
+      type: "work_out_of_time",
+      message: `Has ${tripsOutside.length} trip(s) outside working hours (${minutesToTime(workStart)} - ${minutesToTime(workEnd)})`,
+      severity: "high",
+    })
+  }
+
+  
 
   // Guard: empty shift or inverted times
   if (workEnd <= workStart) return warnings

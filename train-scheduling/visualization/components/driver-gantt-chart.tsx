@@ -11,8 +11,15 @@ interface DriverGanttChartProps {
 
 export function DriverGanttChart({ drivers }: DriverGanttChartProps) {
   // Calculate time range for the chart (earliest start to latest end)
-  const rawMinTime = Math.min(...drivers.map((d) => d.start));
-  const rawMaxTime = Math.max(...drivers.map((d) => d.end));
+  let rawMinTime = Math.min(...drivers.map((d) => d.start));
+  let rawMaxTime = Math.max(...drivers.map((d) => d.end));
+  // update time range by checking with all trips as well (arrival/departure times
+  
+  rawMinTime = Math.min(rawMinTime, ...drivers.flatMap(d => d.trips.map(t => t.departure)));
+  rawMaxTime = Math.max(rawMaxTime, ...drivers.flatMap(d => d.trips.map(t => t.arrival)));
+
+
+
   // Round min/max to nearest 30 for grid consistency
   const minTime = Math.floor(rawMinTime / 30) * 30;
   const maxTime = Math.ceil(rawMaxTime / 30) * 30;

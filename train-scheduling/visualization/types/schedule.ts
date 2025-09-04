@@ -58,6 +58,7 @@ export interface Warning {
     | "tight_schedule"
     | "duplicate_assignment"
     | "working_too_early"
+    | "work_out_of_time"
   message: string
   severity: "low" | "medium" | "high"
 }

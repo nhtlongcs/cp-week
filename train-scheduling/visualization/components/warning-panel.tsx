@@ -1,10 +1,13 @@
+
 "use client"
+import React from "react"
 
 import type { Warning } from "@/types/schedule"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertTriangle, Clock, Users, XCircle } from "lucide-react"
+import { ChevronDown, ChevronRight } from "lucide-react"
 
 interface WarningPanelProps {
   warnings: Warning[]
@@ -67,6 +70,19 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
     )
   }
 
+  // State for expanded summary cards
+  const [expanded, setExpanded] = React.useState<{ [key: string]: boolean }>({})
+
+  // Helper to toggle expand/collapse
+  const toggleExpand = (key: string) => {
+    setExpanded((prev) => ({ ...prev, [key]: !prev[key] }))
+  }
+
+  // Helper to render chevron icon
+  const ChevronIcon = ({ open }: { open: boolean }) => (
+    open ? <ChevronDown className="w-4 h-4 transition-transform" /> : <ChevronRight className="w-4 h-4 transition-transform" />
+  )
+
   return (
     <div className="space-y-4">
       {/* Critical Warnings Alert */}
@@ -96,12 +112,15 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
         </Alert>
       )}
 
-      {/* Warning Summary Cards */}
+      {/* Expandable Warning Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Overtime Violations Card */}
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Overtime Violations</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"> 
+            <div className="flex items-center gap-2">
+              <CardTitle className="text-sm font-medium">Overtime Violations</CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-red-600">{warningsByType.overtime?.length || 0}</div>
@@ -109,10 +128,13 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
           </CardContent>
         </Card>
 
+        {/* Break Violations Card */}
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Break Violations</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"> 
+            <div className="flex items-center gap-2">
+              <CardTitle className="text-sm font-medium">Break Violations</CardTitle>
+              <Clock className="h-4 w-4 text-muted-foreground" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-yellow-600">
@@ -122,10 +144,13 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
           </CardContent>
         </Card>
 
+        {/* Schedule Conflicts Card */}
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Schedule Conflicts</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"> 
+            <div className="flex items-center gap-2">
+              <CardTitle className="text-sm font-medium">Schedule Conflicts</CardTitle>
+              <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-orange-600">
@@ -137,39 +162,57 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
       </div>
 
       {/* Detailed Warning List */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5" />
-            Warning Details
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-3">
-            {Object.entries(warningsByType).map(([type, typeWarnings]) => (
-              <div key={type} className="space-y-2">
-                <h4 className="font-medium text-sm capitalize flex items-center gap-2">
-                  {getSeverityIcon(typeWarnings[0].severity)}
-                  {type.replace("_", " ")} ({typeWarnings.length})
-                </h4>
-                <div className="space-y-1 ml-6">
-                  {typeWarnings.map((warning, index) => (
-                    <div key={index} className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        {warning.message}
-                        {"driver" in warning && ` (${warning.driver})`}
-                      </span>
-                      <Badge variant={getSeverityColor(warning.severity)} className="text-xs">
-                        {warning.severity}
-                      </Badge>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 cursor-pointer" onClick={() => toggleExpand("details")}> 
+            <CardTitle className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
+              Warning Details
+            </CardTitle>
+            <button
+              type="button"
+              aria-label={expanded["details"] ? "Collapse details" : "Expand details"}
+              className="ml-2 focus:outline-none"
+              onClick={e => { e.stopPropagation(); toggleExpand("details") }}
+            >
+              <ChevronIcon open={!!expanded["details"]} />
+            </button>
+          </CardHeader>
+          <CardContent>
+            {expanded["details"] && (
+              <div className="space-y-3">
+                {Object.entries(warningsByType).map(([type, typeWarnings]) => (
+                  <div key={type} className="space-y-2">
+                    <div
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => toggleExpand(`type-${type}`)}
+                    >
+                      <h4 className="font-medium text-sm capitalize flex items-center gap-2">
+                        {getSeverityIcon(typeWarnings[0].severity)}
+                        {type.replace("_", " ")} ({typeWarnings.length})
+                      </h4>
+                      <ChevronIcon open={!!expanded[`type-${type}`]} />
                     </div>
-                  ))}
-                </div>
+                    {expanded[`type-${type}`] && (
+                      <div className="space-y-1 ml-6 mt-2">
+                        {typeWarnings.map((warning, index) => (
+                          <div key={index} className="flex items-center justify-between text-sm">
+                            <span className="text-muted-foreground">
+                              {warning.message}
+                              {"driver" in warning && ` (${warning.driver})`}
+                            </span>
+                            <Badge variant={getSeverityColor(warning.severity)} className="text-xs">
+                              {warning.severity}
+                            </Badge>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            )}
+          </CardContent>
+        </Card>
     </div>
   )
 }

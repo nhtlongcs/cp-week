@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Search, Filter, RefreshCw, Download, X } from "lucide-react"
+import { Search, Filter, RefreshCw, Download, X, Upload } from "lucide-react"
 
 interface DashboardFiltersProps {
   drivers: string[]
@@ -93,9 +93,17 @@ export function DashboardFilters({
               <Download className="w-4 h-4" />
             </Button>
             {/* Solution Upload */}
-            <div className="ml-2">
-              <SolutionUpload onUpload={onRefresh} />
-            </div>
+                <div className="ml-2 flex items-center gap-2">
+                  <SolutionUpload
+                    onUpload={onRefresh}
+                    icon={<Upload className="w-4 h-4" />}
+                    renderStatus={(fileChosen: boolean) =>
+                      !fileChosen ? (
+                        <span className="text-xs text-muted-foreground ml-2"></span>
+                      ) : null
+                    }
+                  />
+                </div>
           </div>
         </div>
       </CardHeader>
