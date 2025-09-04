@@ -1,0 +1,666 @@
+{
+    "trips": [
+        {
+            "nr": 1,
+            "train": "T1",
+            "driver": "D1",
+            "departure": 330,
+            "arrival": 385,
+            "destination": "cobh"
+        },
+        {
+            "nr": 33,
+            "train": "T2",
+            "driver": "D2",
+            "departure": 345,
+            "arrival": 398,
+            "destination": "midleton"
+        },
+        {
+            "nr": 34,
+            "train": "T3",
+            "driver": "D3",
+            "departure": 375,
+            "arrival": 428,
+            "destination": "midleton"
+        },
+        {
+            "nr": 64,
+            "train": "T4",
+            "driver": "D4",
+            "departure": 380,
+            "arrival": 435,
+            "destination": "mallow"
+        },
+        {
+            "nr": 2,
+            "train": "T5",
+            "driver": "D1",
+            "departure": 390,
+            "arrival": 445,
+            "destination": "cobh"
+        },
+        {
+            "nr": 35,
+            "train": "T6",
+            "driver": "D5",
+            "departure": 405,
+            "arrival": 458,
+            "destination": "midleton"
+        },
+        {
+            "nr": 3,
+            "train": "T1",
+            "driver": "D2",
+            "departure": 420,
+            "arrival": 475,
+            "destination": "cobh"
+        },
+        {
+            "nr": 36,
+            "train": "T3",
+            "driver": "D3",
+            "departure": 435,
+            "arrival": 488,
+            "destination": "midleton"
+        },
+        {
+            "nr": 65,
+            "train": "T4",
+            "driver": "D4",
+            "departure": 440,
+            "arrival": 495,
+            "destination": "mallow"
+        },
+        {
+            "nr": 4,
+            "train": "T2",
+            "driver": "D1",
+            "departure": 450,
+            "arrival": 505,
+            "destination": "cobh"
+        },
+        {
+            "nr": 37,
+            "train": "T5",
+            "driver": "D5",
+            "departure": 465,
+            "arrival": 518,
+            "destination": "midleton"
+        },
+        {
+            "nr": 66,
+            "train": "T1",
+            "driver": "D2",
+            "departure": 475,
+            "arrival": 532,
+            "destination": "mallow"
+        },
+        {
+            "nr": 5,
+            "train": "T6",
+            "driver": "D6",
+            "departure": 480,
+            "arrival": 535,
+            "destination": "cobh"
+        },
+        {
+            "nr": 38,
+            "train": "T4",
+            "driver": "D4",
+            "departure": 495,
+            "arrival": 548,
+            "destination": "midleton"
+        },
+        {
+            "nr": 67,
+            "train": "T3",
+            "driver": "D3",
+            "departure": 500,
+            "arrival": 555,
+            "destination": "mallow"
+        },
+        {
+            "nr": 6,
+            "train": "T2",
+            "driver": "D1",
+            "departure": 510,
+            "arrival": 565,
+            "destination": "cobh"
+        },
+        {
+            "nr": 39,
+            "train": "T5",
+            "driver": "D5",
+            "departure": 525,
+            "arrival": 578,
+            "destination": "midleton"
+        },
+        {
+            "nr": 7,
+            "train": "T1",
+            "driver": "D2",
+            "departure": 540,
+            "arrival": 595,
+            "destination": "cobh"
+        },
+        {
+            "nr": 40,
+            "train": "T4",
+            "driver": "D6",
+            "departure": 555,
+            "arrival": 608,
+            "destination": "midleton"
+        },
+        {
+            "nr": 8,
+            "train": "T3",
+            "driver": "D4",
+            "departure": 570,
+            "arrival": 625,
+            "destination": "cobh"
+        },
+        {
+            "nr": 41,
+            "train": "T5",
+            "driver": "D5",
+            "departure": 585,
+            "arrival": 638,
+            "destination": "midleton"
+        },
+        {
+            "nr": 9,
+            "train": "T6",
+            "driver": "D3",
+            "departure": 600,
+            "arrival": 655,
+            "destination": "cobh"
+        },
+        {
+            "nr": 42,
+            "train": "T4",
+            "driver": "D6",
+            "departure": 615,
+            "arrival": 668,
+            "destination": "midleton"
+        },
+        {
+            "nr": 10,
+            "train": "T1",
+            "driver": "D1",
+            "departure": 630,
+            "arrival": 685,
+            "destination": "cobh"
+        },
+        {
+            "nr": 43,
+            "train": "T5",
+            "driver": "D7",
+            "departure": 645,
+            "arrival": 698,
+            "destination": "midleton"
+        },
+        {
+            "nr": 11,
+            "train": "T6",
+            "driver": "D2",
+            "departure": 660,
+            "arrival": 715,
+            "destination": "cobh"
+        },
+        {
+            "nr": 44,
+            "train": "T3",
+            "driver": "D6",
+            "departure": 675,
+            "arrival": 728,
+            "destination": "midleton"
+        },
+        {
+            "nr": 12,
+            "train": "T4",
+            "driver": "D1",
+            "departure": 690,
+            "arrival": 745,
+            "destination": "cobh"
+        },
+        {
+            "nr": 45,
+            "train": "T5",
+            "driver": "D4",
+            "departure": 705,
+            "arrival": 758,
+            "destination": "midleton"
+        },
+        {
+            "nr": 13,
+            "train": "T6",
+            "driver": "D2",
+            "departure": 720,
+            "arrival": 775,
+            "destination": "cobh"
+        },
+        {
+            "nr": 46,
+            "train": "T3",
+            "driver": "D5",
+            "departure": 735,
+            "arrival": 788,
+            "destination": "midleton"
+        },
+        {
+            "nr": 14,
+            "train": "T1",
+            "driver": "D1",
+            "departure": 750,
+            "arrival": 805,
+            "destination": "cobh"
+        },
+        {
+            "nr": 47,
+            "train": "T4",
+            "driver": "D4",
+            "departure": 765,
+            "arrival": 818,
+            "destination": "midleton"
+        },
+        {
+            "nr": 15,
+            "train": "T2",
+            "driver": "D2",
+            "departure": 780,
+            "arrival": 835,
+            "destination": "cobh"
+        },
+        {
+            "nr": 48,
+            "train": "T3",
+            "driver": "D6",
+            "departure": 795,
+            "arrival": 848,
+            "destination": "midleton"
+        },
+        {
+            "nr": 16,
+            "train": "T6",
+            "driver": "D5",
+            "departure": 810,
+            "arrival": 865,
+            "destination": "cobh"
+        },
+        {
+            "nr": 49,
+            "train": "T5",
+            "driver": "D4",
+            "departure": 825,
+            "arrival": 878,
+            "destination": "midleton"
+        },
+        {
+            "nr": 17,
+            "train": "T4",
+            "driver": "D7",
+            "departure": 840,
+            "arrival": 895,
+            "destination": "cobh"
+        },
+        {
+            "nr": 50,
+            "train": "T3",
+            "driver": "D6",
+            "departure": 855,
+            "arrival": 908,
+            "destination": "midleton"
+        },
+        {
+            "nr": 18,
+            "train": "T6",
+            "driver": "D8",
+            "departure": 870,
+            "arrival": 925,
+            "destination": "cobh"
+        },
+        {
+            "nr": 51,
+            "train": "T5",
+            "driver": "D9",
+            "departure": 885,
+            "arrival": 938,
+            "destination": "midleton"
+        },
+        {
+            "nr": 19,
+            "train": "T4",
+            "driver": "D7",
+            "departure": 900,
+            "arrival": 955,
+            "destination": "cobh"
+        },
+        {
+            "nr": 52,
+            "train": "T1",
+            "driver": "D6",
+            "departure": 915,
+            "arrival": 968,
+            "destination": "midleton"
+        },
+        {
+            "nr": 20,
+            "train": "T6",
+            "driver": "D8",
+            "departure": 930,
+            "arrival": 985,
+            "destination": "cobh"
+        },
+        {
+            "nr": 53,
+            "train": "T5",
+            "driver": "D10",
+            "departure": 945,
+            "arrival": 998,
+            "destination": "midleton"
+        },
+        {
+            "nr": 21,
+            "train": "T4",
+            "driver": "D11",
+            "departure": 960,
+            "arrival": 1015,
+            "destination": "cobh"
+        },
+        {
+            "nr": 54,
+            "train": "T1",
+            "driver": "D12",
+            "departure": 975,
+            "arrival": 1028,
+            "destination": "midleton"
+        },
+        {
+            "nr": 22,
+            "train": "T2",
+            "driver": "D7",
+            "departure": 990,
+            "arrival": 1045,
+            "destination": "cobh"
+        },
+        {
+            "nr": 55,
+            "train": "T6",
+            "driver": "D8",
+            "departure": 1005,
+            "arrival": 1058,
+            "destination": "midleton"
+        },
+        {
+            "nr": 68,
+            "train": "T5",
+            "driver": "D10",
+            "departure": 1015,
+            "arrival": 1072,
+            "destination": "mallow"
+        },
+        {
+            "nr": 23,
+            "train": "T3",
+            "driver": "D9",
+            "departure": 1020,
+            "arrival": 1075,
+            "destination": "cobh"
+        },
+        {
+            "nr": 56,
+            "train": "T4",
+            "driver": "D11",
+            "departure": 1035,
+            "arrival": 1088,
+            "destination": "midleton"
+        },
+        {
+            "nr": 24,
+            "train": "T2",
+            "driver": "D12",
+            "departure": 1050,
+            "arrival": 1105,
+            "destination": "cobh"
+        },
+        {
+            "nr": 57,
+            "train": "T1",
+            "driver": "D7",
+            "departure": 1065,
+            "arrival": 1118,
+            "destination": "midleton"
+        },
+        {
+            "nr": 69,
+            "train": "T3",
+            "driver": "D10",
+            "departure": 1077,
+            "arrival": 1130,
+            "destination": "mallow"
+        },
+        {
+            "nr": 25,
+            "train": "T5",
+            "driver": "D9",
+            "departure": 1080,
+            "arrival": 1135,
+            "destination": "cobh"
+        },
+        {
+            "nr": 58,
+            "train": "T4",
+            "driver": "D11",
+            "departure": 1095,
+            "arrival": 1148,
+            "destination": "midleton"
+        },
+        {
+            "nr": 26,
+            "train": "T6",
+            "driver": "D12",
+            "departure": 1110,
+            "arrival": 1165,
+            "destination": "cobh"
+        },
+        {
+            "nr": 59,
+            "train": "T2",
+            "driver": "D8",
+            "departure": 1125,
+            "arrival": 1178,
+            "destination": "midleton"
+        },
+        {
+            "nr": 70,
+            "train": "T3",
+            "driver": "D9",
+            "departure": 1135,
+            "arrival": 1190,
+            "destination": "mallow"
+        },
+        {
+            "nr": 27,
+            "train": "T1",
+            "driver": "D10",
+            "departure": 1140,
+            "arrival": 1195,
+            "destination": "cobh"
+        },
+        {
+            "nr": 60,
+            "train": "T5",
+            "driver": "D11",
+            "departure": 1155,
+            "arrival": 1208,
+            "destination": "midleton"
+        },
+        {
+            "nr": 28,
+            "train": "T6",
+            "driver": "D12",
+            "departure": 1170,
+            "arrival": 1225,
+            "destination": "cobh"
+        },
+        {
+            "nr": 29,
+            "train": "T4",
+            "driver": "D8",
+            "departure": 1200,
+            "arrival": 1255,
+            "destination": "cobh"
+        },
+        {
+            "nr": 61,
+            "train": "T1",
+            "driver": "D9",
+            "departure": 1215,
+            "arrival": 1268,
+            "destination": "midleton"
+        },
+        {
+            "nr": 30,
+            "train": "T4",
+            "driver": "D10",
+            "departure": 1260,
+            "arrival": 1315,
+            "destination": "cobh"
+        },
+        {
+            "nr": 62,
+            "train": "T1",
+            "driver": "D8",
+            "departure": 1275,
+            "arrival": 1328,
+            "destination": "midleton"
+        },
+        {
+            "nr": 31,
+            "train": "T3",
+            "driver": "D10",
+            "departure": 1320,
+            "arrival": 1375,
+            "destination": "cobh"
+        },
+        {
+            "nr": 71,
+            "train": "T5",
+            "driver": "D11",
+            "departure": 1320,
+            "arrival": 1375,
+            "destination": "mallow"
+        },
+        {
+            "nr": 63,
+            "train": "T1",
+            "driver": "D12",
+            "departure": 1365,
+            "arrival": 1418,
+            "destination": "midleton"
+        },
+        {
+            "nr": 32,
+            "train": "T6",
+            "driver": "D10",
+            "departure": 1380,
+            "arrival": 1435,
+            "destination": "cobh"
+        },
+        {
+            "nr": 72,
+            "train": "T2",
+            "driver": "D11",
+            "departure": 1380,
+            "arrival": 1435,
+            "destination": "mallow"
+        }
+    ],
+    "drivers": [
+        {
+            "driver": "D1",
+            "start": 315,
+            "end": 820,
+            "breaks_window_start": 495,
+            "breaks_window_end": 675
+        },
+        {
+            "driver": "D5",
+            "start": 390,
+            "end": 880,
+            "breaks_window_start": 570,
+            "breaks_window_end": 750
+        },
+        {
+            "driver": "D7",
+            "start": 593,
+            "end": 1133,
+            "breaks_window_start": 773,
+            "breaks_window_end": 953
+        },
+        {
+            "driver": "D10",
+            "start": 930,
+            "end": 1450,
+            "breaks_window_start": 1110,
+            "breaks_window_end": 1290
+        },
+        {
+            "driver": "D2",
+            "start": 330,
+            "end": 850,
+            "breaks_window_start": 510,
+            "breaks_window_end": 690
+        },
+        {
+            "driver": "D4",
+            "start": 365,
+            "end": 893,
+            "breaks_window_start": 545,
+            "breaks_window_end": 725
+        },
+        {
+            "driver": "D6",
+            "start": 465,
+            "end": 983,
+            "breaks_window_start": 645,
+            "breaks_window_end": 825
+        },
+        {
+            "driver": "D12",
+            "start": 960,
+            "end": 1433,
+            "breaks_window_start": 1140,
+            "breaks_window_end": 1320
+        },
+        {
+            "driver": "D11",
+            "start": 945,
+            "end": 1450,
+            "breaks_window_start": 1125,
+            "breaks_window_end": 1305
+        },
+        {
+            "driver": "D8",
+            "start": 855,
+            "end": 1343,
+            "breaks_window_start": 1035,
+            "breaks_window_end": 1215
+        },
+        {
+            "driver": "D3",
+            "start": 130,
+            "end": 670,
+            "breaks_window_start": 310,
+            "breaks_window_end": 490
+        },
+        {
+            "driver": "D9",
+            "start": 743,
+            "end": 1283,
+            "breaks_window_start": 923,
+            "breaks_window_end": 1103
+        }
+    ]
+}
