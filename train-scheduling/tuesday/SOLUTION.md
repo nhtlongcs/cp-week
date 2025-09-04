@@ -100,20 +100,15 @@ The other variables (`A[t,d]`, `uD[d]`, `Sd`, `Ed`) are the same as in the CP mo
 
 Instead of using logical implication (if-then), use linear inequalities with Big-M standard linearization trick to enforce the same conditions.
 
-    $$
-    S_d \le (D_t - C_{on}) + M \cdot (1 - A_{t,d})
-    $$
-    $$
-    E_d \ge (R_t + C_{off}) - M \cdot (1 - A_{t,d})
-    $$
+$$S_d \le (D_t - C_{on}) + M \cdot (1 - A_{t,d})$$
+    
+$$E_d \ge (R_t + C_{off}) - M \cdot (1 - A_{t,d})$$
 
 #### 2. Non-Overlapping Trips
 
 Creates pairwise constraints for every possible conflicting pair of trips. For every pair of trips $(t_1, t_2)$ that overlap in time:
 
-    $$
-    A_{t_1, d} + A_{t_2, d} \le 1 \quad \forall d \in D
-    $$
+$$A_{t_1, d} + A_{t_2, d} \le 1 \quad \forall d \in D$$
 
 The CP model's `NoOverlap` is a "global" constraint that considers all trips assigned to a driver simultaneously. The MILP model must decompose this single logical rule into a potentially huge number of simple pairwise constraints ($O(T^2)$ per driver). 
 
@@ -124,18 +119,12 @@ The CP model's `NoOverlap` is a "global" constraint that considers all trips ass
 Manually express the non-overlap condition for the break with *every single trip* using a disjunctive ("either-or") constraint, which is then linearized with the auxiliary variable `trip_before_break` and Big-M.
 For each driver $d$ and trip $t$:
 
-    $$
-    \text{IF } A_{t,d} = 1 \text{ THEN } \Big( (R_t \le b_{start,d}) \lor (b_{start,d} + T_{B_{dur}} \le D_t) \Big)
-    $$
+$$\text{IF } A_{t,d} = 1 \text{ THEN } \Big( (R_t \le b_{start,d}) \lor (b_{start,d} + T_{B_{dur}} \le D_t) \Big)$$
 
 This logical statement is linearized into the following two constraints using the binary variable $Z_{d,t}$ (which is `trip_before_break[d,t]` in your code):
 
-    $$
-    R_t \le b_{start,d} + M \cdot (1 - Z_{d,t}) + M \cdot (1 - A_{t,d})
-    $$   
-    $$
-    b_{start,d} + T_{B_{dur}} \le D_t + M \cdot Z_{d,t} + M \cdot (1 - A_{t,d})
-    $$
+$$R_t \le b_{start,d} + M \cdot (1 - Z_{d,t}) + M \cdot (1 - A_{t,d})$$
+$$b_{start,d} + T_{B_{dur}} \le D_t + M \cdot Z_{d,t} + M \cdot (1 - A_{t,d})$$
 
 This is the difference that most clearly illustrates the power of CP. By treating the break as just another "interval", it fits naturally into the global `NoOverlap` constraint. The MILP model has to do a lot of works with numberical relaxations and auxiliary variables
 
