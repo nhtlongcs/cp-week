@@ -88,7 +88,7 @@ function generateDriverWarnings(driver: ProcessedDriver): Warning[] {
   const MAX_SHIFT_HOURS = 9
   const LONG_SHIFT_MIN = 6 * 60
   const MAX_CONTINUOUS_WORK_MIN = 6 * 60
-  const EARLY_BREAK_MIN = 3 * 60
+  const EARLY_BREAK_MIN = 2 * 60
   const MIN_PROPER_BREAK_MIN = 60
 
   // ---- overtime (in hours) ----

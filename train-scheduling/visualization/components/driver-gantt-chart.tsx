@@ -255,14 +255,6 @@ export function DriverGanttChart({ drivers }: DriverGanttChartProps) {
                   </Tooltip>
                 ))}
 
-                {/* Warning indicators */}
-                {/* {driver.warnings.map((warning, index) => (
-                  <div
-                    key={index}
-                    className={`absolute top-0 w-1 h-full ${getSeverityColor(warning.severity)} opacity-80`}
-                    style={{ right: `${index * 4}px` }}
-                  />
-                ))} */}
               </div>
             </div>
           ))}

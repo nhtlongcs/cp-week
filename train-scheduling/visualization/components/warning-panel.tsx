@@ -55,7 +55,7 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
     {} as Record<string, any[]>,
   )
 
-  const criticalWarnings = allWarnings.filter((w) => w.severity === "high")
+  const criticalWarnings = allWarnings.filter((w) => w.severity === "high" )
 
   if (allWarnings.length === 0) {
     return (
@@ -168,17 +168,8 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
               <AlertTriangle className="w-5 h-5" />
               Warning Details
             </CardTitle>
-            <button
-              type="button"
-              aria-label={expanded["details"] ? "Collapse details" : "Expand details"}
-              className="ml-2 focus:outline-none"
-              onClick={e => { e.stopPropagation(); toggleExpand("details") }}
-            >
-              <ChevronIcon open={!!expanded["details"]} />
-            </button>
           </CardHeader>
           <CardContent>
-            {expanded["details"] && (
               <div className="space-y-3">
                 {Object.entries(warningsByType).map(([type, typeWarnings]) => (
                   <div key={type} className="space-y-2">
@@ -210,7 +201,6 @@ export function WarningPanel({ warnings, driverWarnings }: WarningPanelProps) {
                   </div>
                 ))}
               </div>
-            )}
           </CardContent>
         </Card>
     </div>
