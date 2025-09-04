@@ -11,7 +11,7 @@ The dashboard includes:
 - A warning panel highlighting potential issues in the schedule.
 - A summary of key statistics.
 
-![Screenshot](./screenshot.png)
+![Screenshot](./Screenshot.png)
 
 ## Installation
 
