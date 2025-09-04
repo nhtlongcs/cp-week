@@ -69,6 +69,9 @@ export function TrainGanttChart({ trains, allTrips }: TrainGanttChartProps) {
   // Get unique drivers for color mapping
   const uniqueDrivers = Array.from(new Set(allTrips.map((t) => t.driver))).sort()
 
+  // Offset for Train info panel (w-48 = 12rem = 192px)
+  const trainInfoPanelWidthPx = 192
+
   return (
     <TooltipProvider>
       <div className="space-y-4 overflow-x-auto">
@@ -79,7 +82,7 @@ export function TrainGanttChart({ trains, allTrips }: TrainGanttChartProps) {
               <div
                 key={label.time}
                 className="absolute text-xs text-muted-foreground"
-                style={{ left: `${label.position}%` }}
+                style={{ left: `calc(${label.position}% + ${trainInfoPanelWidthPx}px)` }}
               >
                 {label.label}
               </div>

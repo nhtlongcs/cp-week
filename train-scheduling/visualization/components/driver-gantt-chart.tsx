@@ -18,6 +18,24 @@ export function DriverGanttChart({ drivers }: DriverGanttChartProps) {
   rawMinTime = Math.min(rawMinTime, ...drivers.flatMap(d => d.trips.map(t => t.departure)));
   rawMaxTime = Math.max(rawMaxTime, ...drivers.flatMap(d => d.trips.map(t => t.arrival)));
 
+  // Fixed color palette for trains
+  const trainColors = [
+    "#1abc9c", // turquoise
+    "#3498db", // blue
+    "#9b59b6", // purple
+    "#e67e22", // orange
+    "#e74c3c", // red
+    "#2ecc71", // green
+    "#34495e", // dark blue
+    "#fd79a8", // pink
+    "#636e72", // gray
+  ];
+  // Map train name to color
+  const allTrains = Array.from(new Set(drivers.flatMap(d => d.trips.map(t => t.train))));
+  const trainColorMap: Record<string, string> = {};
+  allTrains.forEach((train, idx) => {
+    trainColorMap[train] = trainColors[idx % trainColors.length];
+  });
 
 
   // Round min/max to nearest 30 for grid consistency
@@ -234,8 +252,11 @@ export function DriverGanttChart({ drivers }: DriverGanttChartProps) {
                   <Tooltip key={trip.nr}>
                     <TooltipTrigger asChild>
                       <div
-                        className="absolute top-2 h-12 bg-green-500 dark:bg-green-600 rounded flex items-center justify-center text-white text-xs font-medium cursor-pointer hover:bg-green-600 dark:hover:bg-green-500 transition-colors"
-                        style={getPositionAndWidth(trip.departure, trip.arrival)}
+                        className="absolute top-2 h-12 rounded flex items-center justify-center text-white text-xs font-medium cursor-pointer transition-colors"
+                        style={{
+                          ...getPositionAndWidth(trip.departure, trip.arrival),
+                          background: trainColorMap[trip.train],
+                        }}
                       >
                         {trip.train}
                       </div>
