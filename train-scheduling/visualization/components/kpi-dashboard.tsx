@@ -280,7 +280,7 @@ export function KPIDashboard({ drivers, trains, trips }: KPIDashboardProps) {
                     name === "totalBreakTime"
                       ? "Total Break Time"
                       : name === "properBreaks"
-                        ? "Proper Breaks (30+ min)"
+                        ? "Proper Breaks (60+ min)"
                         : "Average Break Duration",
                   ]}
                 />
@@ -305,7 +305,7 @@ export function KPIDashboard({ drivers, trains, trips }: KPIDashboardProps) {
                     name === "totalBreakTime"
                       ? "Total Break Time"
                       : name === "properBreaks"
-                        ? "Proper Breaks (30+ min)"
+                        ? "Proper Breaks (60+ min)"
                         : "Average Break Duration",
                   ]}
                 />

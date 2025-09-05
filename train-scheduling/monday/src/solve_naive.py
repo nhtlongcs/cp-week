@@ -91,7 +91,7 @@ def greedy_assign(trips):
 
     return assignments
 
-with open("monfri.json", "r") as f:
+with open("data/monfri.json", "r") as f:
     trips = json.load(f)["trips"]
 
 assignments = greedy_assign(trips)

@@ -388,7 +388,7 @@ def save_and_close_figure(fig, filename, saved_files=None):
 # Generate timeline images only
 if __name__ == "__main__":
     import json 
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         timetable = json.load(f)
     
     trips = timetable["trips"][:]

@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 # Load trip data
-with open("monfri.json", "r") as f:
+with open("data/monfri.json", "r") as f:
     data = json.load(f)
 
 trips = data["trips"]

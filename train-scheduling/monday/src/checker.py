@@ -13,7 +13,7 @@ nr_plan = set(plan['nr'])
 
 assert plan['nr'].nunique() == len(nr_plan), "Duplicate trips in solution"
 
-with open("monfri.json", "r") as f:
+with open("data/monfri.json", "r") as f:
     trips = json.load(f)["trips"]
 nr_gt = set([x['nr'] for x in trips])
 

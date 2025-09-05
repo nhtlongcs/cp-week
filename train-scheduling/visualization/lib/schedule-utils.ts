@@ -213,10 +213,10 @@ function generateDriverWarnings(driver: ProcessedDriver): Warning[] {
   }
 
   // No proper break at all on a long shift
-  if (!hasProperBreak && driver.workingHours > 6) {
+  if (!hasProperBreak) {
     warnings.push({
       type: "no_break",
-      message: "No proper break (30+ min) during long shift",
+      message: "No proper break (60+ min) during long shift",
       severity: "high",
     })
   }

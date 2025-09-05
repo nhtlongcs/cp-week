@@ -16,7 +16,7 @@ def solve_with_gurobi():
     """Solve train scheduling problem using only Gurobi optimization"""
     
     # Load trip data
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         data = json.load(f)
     trips = data["trips"]
     

@@ -3,7 +3,7 @@ from ortools.sat.python import cp_model
 
 def solve_with_ortools_improved():
     # Load trip data
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         data = json.load(f)
     trips = data["trips"]
     
@@ -154,6 +154,8 @@ def solve_with_ortools_improved():
         # Break must be within [start + BREAK_START, start + BREAK_END] if driver has trips
         model.Add(break_start >= driver_start_time + BREAK_START).OnlyEnforceIf(driver_has_trips)
         model.Add(break_start + BREAK_DURATION <= driver_start_time + BREAK_END).OnlyEnforceIf(driver_has_trips)
+        model.Add(break_start + BREAK_DURATION <= driver_end_time).OnlyEnforceIf(driver_has_trips)
+        
         # Break must not overlap with any trip interval
         model.AddNoOverlap([break_interval] + trip_intervals)
 

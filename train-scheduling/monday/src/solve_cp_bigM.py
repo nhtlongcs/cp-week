@@ -6,7 +6,7 @@ def solve_with_ortools_improved():
     """Improved version with better constraint modeling for CP-SAT"""
     
     # Load trip data
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         data = json.load(f)
     trips = data["trips"]
     

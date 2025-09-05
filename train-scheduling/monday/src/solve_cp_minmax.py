@@ -4,7 +4,7 @@ from ortools.sat.python import cp_model
 
 def solve_with_ortools_improved():
     # Load trip data
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         data = json.load(f)
     trips = data["trips"]
     

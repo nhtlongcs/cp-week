@@ -20,7 +20,7 @@ def solve_with_gurobi():
     """Giải bài toán lập lịch tàu hỏa sử dụng Gurobi."""
     
     # Tải dữ liệu các chuyến đi
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         data = json.load(f)
     trips = data["trips"]
     
@@ -126,6 +126,7 @@ def solve_with_gurobi():
         # Giờ nghỉ phải nằm trong khoảng [3h, 6h] sau khi bắt đầu ca làm việc
         model.addConstr(break_start_time[d] >= driver_start_time[d] + BREAK_START - BIG_M * (1 - driver_used[d]), name=f"break_window_start_{d}")
         model.addConstr(break_start_time[d] + BREAK_DURATION <= driver_start_time[d] + BREAK_END + BIG_M * (1 - driver_used[d]), name=f"break_window_end_{d}")
+        model.addConstr(break_start_time[d]  + BREAK_DURATION <= driver_end_time[d] + BIG_M * (1 - driver_used[d]), name=f"break_before_end_{d}")
 
         for t in range(n_trips):
             trip = trips[t]

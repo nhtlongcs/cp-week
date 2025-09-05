@@ -3,7 +3,7 @@ from ortools.sat.python import cp_model
 
 def solve_with_ortools_improved():
     # Load trip data
-    with open("monfri.json", "r") as f:
+    with open("data/monfri.json", "r") as f:
         data = json.load(f)
     trips = data["trips"]
     
@@ -16,6 +16,7 @@ def solve_with_ortools_improved():
     BREAK_END = 6 * 60
     BREAK_DURATION = 60
     END_OF_DAY = 24 * 60 * 2
+    BEGIN_OF_DAY = 5 * 60  # 5:00 AM in minutes
     n_trips = len(trips)
     
     # More conservative bounds based on problem structure
@@ -119,6 +120,7 @@ def solve_with_ortools_improved():
         driver_start_time = model.NewIntVar(0, 24*60*2, f'driver_{d}_start_time')
         driver_end_time = model.NewIntVar(0, 24*60*2, f'driver_{d}_end_time')
         driver_start_time_vars.append(driver_start_time)
+        model.Add(driver_start_time>=BEGIN_OF_DAY) # Just more realistic
         driver_end_time_vars.append(driver_end_time)
 
         # For each trip, if assigned, update start/end
@@ -151,6 +153,8 @@ def solve_with_ortools_improved():
             break_start + BREAK_DURATION,
             driver_has_trips,
             f'driver_{d}_break_interval')
+        
+        model.Add(break_start + BREAK_DURATION <= driver_end_time).OnlyEnforceIf(driver_has_trips)
         # Break must be within [start + BREAK_START, start + BREAK_END] if driver has trips
         model.Add(break_start >= driver_start_time + BREAK_START).OnlyEnforceIf(driver_has_trips)
         model.Add(break_start + BREAK_DURATION <= driver_start_time + BREAK_END).OnlyEnforceIf(driver_has_trips)
@@ -206,6 +210,11 @@ def solve_with_ortools_improved():
                 "start": solver2.Value(driver_start_time_vars[d]),
                 "end": solver2.Value(driver_end_time_vars[d])
             })
+            driver_times[-1]["breaks_window_start"] = driver_times[-1]["start"] + BREAK_START
+            driver_times[-1]["breaks_window_end"] = driver_times[-1]["start"] + BREAK_END
+            if driver_times[-1]["end"] - driver_times[-1]["start"] == 0:
+                driver_times.pop()
+                
         for t in range(n_trips):
             driver_id = solver2.Value(trip_driver[t])
             train_id = solver2.Value(trip_train[t])
