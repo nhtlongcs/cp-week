@@ -227,6 +227,7 @@ The first implementation is tighter and more structured (stronger constraints, b
 ### Objective
 
 There are multiple way to define the objective. E.g., minimize total number of trains and drivers used:
+
 $$
 \min \sum_{r \in R} v_r + \sum_{d \in D} u_d
 $$
